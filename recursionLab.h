@@ -9,14 +9,26 @@ using namespace std;
 //          lineOfStars(0) returns ""
 // You may not use a loop.
 string lineOfStars(int n) {
-	return "fixme";
+	if(n <= 0) {
+		return "";
+	}
+	return "*" + lineOfStars(n-1);
 }
 
 // Write a function power() that will
 //    compute the x to the power of n recursively
 // if the power is invalid, return 0
 float power(float x, int n) {
-	return -1;	
+	if (x == 0 && n < 0) {
+		return 0;
+	}
+	if (n == 0) {
+		return 1;
+	}
+	if (n < 0) {
+		return 1 / power(x, -n);
+	}
+	return x * power(x, n-1);	
 }
 
 /*
@@ -36,14 +48,22 @@ should display:
 ****
 
 */
-void stars(int n) {}
+void stars(int n) {
+	if (n < 1) {
+		return;
+	}
+	lineOfStars(n);
+	stars(n-1);
+	lineOfStars(n);
+
+}
 
 // Write a *recursive* function that will check if
 //    a string is a palindrome
 // Hint 1: you can call s.front() to get the first character of string and s.back() to get the last one
 // Hint 2: s.substr(i,j) gives you the substring of s. For example if s = Hello, s(1,s.length()-1) gives you ello
-bool isPalindromeR(string s)
-{
+bool isPalindromeR(string s) {
+
 	return false;
 }
 
